@@ -1,34 +1,40 @@
 export const screens = {
   hello: {
-    text: "Привет, герой!",
+    text: "Приветствую, путник!",
   },
-  lalala: {
-    text: "ляляля",
+  warning: {
+    text: "Впереди тебя ожидают тяжелейшие испытания.",
   },
   ready: {
-    text: "готов ли ты?",
+    text: "Готов ли ты начать?",
   },
+
   coward: {
-    text: "трус!",
+    text: "Трусливый слизняк!",
   },
+
   win: {
-    text: "ты справился!",
+    text: "Ты справился с первым испытанием!",
   },
   forward: {
-    text: "но впереди еще много",
+    text: "Но впереди их еще много...",
   },
   scroll: {
-    text: "возьми этот свиток",
+    text: "Возьми этот свиток, он тебе пригодится.",
+  },
+
+  memento: {
+    text: 'И запомни еще кое-что...'
   },
   hint: {
-    text: "помни про двойное дно",
+    text: "Даже в самом пустом из самых пустых есть двойное дно...",
   },
   bye: {
-    text: "прощай",
+    text: "Прощай!",
   },
 };
 
-export const HELLO = ["hello", "lalala", "ready"];
+export const HELLO = ["hello", "warning", "ready"];
 export const UNREADY = ["coward", "lalala", "ready"];
 export const WIN = ["win", "forward", "scroll"];
-export const BYE = ["hint", "bye"];
+export const BYE = ["memento", "hint", "bye"];

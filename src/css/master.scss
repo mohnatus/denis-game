@@ -43,7 +43,7 @@
 
 .master {
   position: absolute;
-  bottom: 30px;
+  bottom: var(--master-bottom-offset);
   left: 50%;
   transform: translate(-81%, 6px) scaleX(-1);
   width: var(--master-width);
@@ -76,23 +76,23 @@
 }
 
 .master-head {
-  background-image: url(../img/head.png);
+  background-image: url(../img/master/head.png);
   animation-name: top;
 }
 
 .master-chest {
-  background-image: url(../img/chest.png);
+  background-image: url(../img/master/chest.png);
   animation-name: top;
 }
 .master-legs {
-  background-image: url(../img/legs.png);
+  background-image: url(../img/master/legs.png);
   animation-name: bottom;
 }
 .master-feet {
-  background-image: url(../img/feet.png);
+  background-image: url(../img/master/feet.png);
 }
 .master-stick {
-  background-image: url(../img/stick.png);
+  background-image: url(../img/master/stick.png);
   transform: translateY(3px);
 }
 

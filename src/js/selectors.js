@@ -25,7 +25,8 @@ export const states = {
     hasHiddenScroll: 'hidden-scroll',
     hasScroll: 'has-scroll',
     puzzleShown: 'puzzle',
-    fullSmoke: 'full-smoke'
+    fullSmoke: 'full-smoke',
+    help: 'help'
 }
 
 export const classes = {

@@ -1,8 +1,21 @@
 .help-desk {
-    position: fixed;
-    background: white;
-    padding: 20px;
-    left: 0;
-    top: 0;
-    bottom: 0;
+  position: fixed;
+  display: none;
+  background: white;
+  padding: 20px;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0.3;
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+body.help {
+  .help-desk {
+    display: block;
+  }
 }

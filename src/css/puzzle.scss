@@ -1,3 +1,5 @@
+@import "./mixins.scss";
+
 .puzzle-wrapper {
   display: none;
   position: absolute;
@@ -5,9 +7,18 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.75);
   align-items: center;
   justify-content: center;
+}
+
+.puzzle-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(6px);
+  z-index: 1;
 }
 
 body.puzzle .puzzle-wrapper {
@@ -18,29 +29,40 @@ body.puzzle .puzzle-wrapper {
   position: relative;
   width: calc(4 * var(--item-size));
   height: calc(4 * var(--item-size));
+  z-index: 2;
 }
 
 .field .item {
   position: absolute;
   width: var(--item-size);
   height: var(--item-size);
-  /* background-color: hsl(calc(var(--value) * 10), 50%, 50%); */
-  background: white;
-  background-size: calc(4 * var(--item-size)) calc(4 * var(--item-size));
-  background-position: left calc(-1 * var(--original-x) * var(--item-size)) top
-    calc(-1 * var(--original-y) * var(--item-size));
+  cursor: pointer;
+
   top: 0;
   left: 0;
-  border: 4px inset brown;
+
+  transform: translateX(calc(var(--x-position) * var(--item-size)))
+    translateY(calc(var(--y-position) * var(--item-size)));
+
+  transition: transform 250ms;
+
+  &[data-value="null"] {
+    opacity: 0;
+  }
+}
+
+.field .item-container {
+  @include border;
+  position: absolute;
+  left: 7px;
+  top: 7px;
+  right: 7px;
+  bottom: 7px;
+  background: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: brown;
   font-size: 60px;
-  font-weight: bold;
-  transform: translateX(calc(var(--x-position) * var(--item-size)))
-    translateY(calc(var(--y-position) * var(--item-size)));
-  border-radius: 4px;
 }
 
 .field.blocked {

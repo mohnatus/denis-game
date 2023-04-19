@@ -7,6 +7,29 @@ import { elementIds, states } from "./selectors";
 export function initScene() {
   const dialog = Dialog(document.getElementById(elementIds.dialog));
 
+  const helper = (point) => {
+    if (point === "start") {
+      document.body.className = "";
+    }
+    if (point === "smoke") {
+      document.body.className = "";
+      document.body.classList.add(states.inited);
+      dialog.start(["bye"]);
+      return;
+    }
+    if (point === "puzzle") {
+      document.body.className = [states.inited, states.puzzleShown].join(" ");
+      activateGame(document.getElementById(elementIds.puzzle), () => {
+        dialog.start(WIN);
+        document.body.classList.remove(states.puzzleShown);
+      });
+    }
+    if (point === "scroll") {
+      document.body.className = [states.inited,].join(" ");
+      dialog.start(["scroll"]);
+    }
+  };
+
   document.addEventListener("click", (e) => {
     const btn = e.target;
     let findScroll = false;
@@ -51,12 +74,7 @@ export function initScene() {
       default:
         if (btn.classList.contains("helper")) {
           const point = btn.dataset.point;
-          if (point === "smoke") {
-            document.body.classList.remove(states.finish);
-            document.body.classList.remove(states.fullSmoke);
-            document.body.classList.add(states.inited);
-            dialog.start(["bye"]);
-          }
+          helper(point);
         }
     }
   });
@@ -66,8 +84,6 @@ export function initScene() {
       dialog.start(HELLO);
       document.body.classList.add(states.inited);
     }
-
-    document.removeEventListener("click", initHandler);
   };
   document.addEventListener("click", initHandler);
 }

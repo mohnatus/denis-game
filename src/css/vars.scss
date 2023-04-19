@@ -1,9 +1,14 @@
+$bg: '%23f1c583';
+
 :root {
   --scene-width: 800px;
   --item-size: 70px;
-  --bg: white;
+  --bg: black;
+  --color: white;
   --border-width: 8px;
+  --master-bottom-offset: 30px;
   --master-width: 220px;
-  --master-ratio: 180%;
-  --master-height: calc(var(--master-ratio) / 100% * var(--master-width));
+  --master-ratio-value: 1.8;
+  --master-ratio: calc(var(--master-ratio-value) * 100%);
+  --master-height: calc(var(--master-ratio-value) * var(--master-width));
 }

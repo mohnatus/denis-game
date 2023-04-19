@@ -1,7 +1,7 @@
 .dialog-wrapper {
   display: none;
   position: absolute;
-  bottom: 400px;
+  bottom: calc(var(--master-bottom-offset) + var(--master-height) - 60px);
   left: 20px;
   right: 20px;
 }
@@ -19,7 +19,7 @@ body.finish {
 }
 
 .dialog {
-  background: white;
+  background: var(--bg);
   padding: 20px;
   border-radius: 10px;
   max-width: 400px;
@@ -32,13 +32,12 @@ body.finish {
 
   &-text {
     height: 2.4em;
-    line-height: 1.2;
   }
 
   &-buttons {
     max-width: 400px;
     width: 100%;
-    margin: 20px auto;
+    margin: 20px auto 0;
 
     &-container {
       display: flex;
@@ -48,16 +47,12 @@ body.finish {
       margin-right: -10px;
     }
 
-    .border-wrapper {
+    .btn-wrapper {
       margin: 0 10px;
       flex-basis: 50%;
       flex-grow: 1;
 
-      button {
-        width: 100%;
-        background: var(--bg);
-        padding: 10px;
-      }
+      
     }
 
     .ready-btn,
@@ -74,7 +69,7 @@ body.finish {
     }
 
     .dialog.typing + & {
-      .border-wrapper {
+      .btn-wrapper {
         opacity: 0.5;
         cursor: not-allowed;
       }

@@ -28,7 +28,7 @@
         <div id="inventory" class="inventory">
           <div class="inventory-item border-wrapper">
             <div id="show-scroll" class="inventory-scroll">
-              <img src="img/scroll-closed.png" width="40" alt="" />
+              <img src="img/scroll/scroll-closed.png" width="40" alt="" />
             </div>
           </div>
           <div class="inventory-item border-wrapper"></div>
@@ -46,53 +46,67 @@
 
           <div class="dialog-buttons">
             <div class="dialog-buttons-container">
-              <div class="border-wrapper ready-btn">
+              <div class="btn-wrapper ready-btn">
                 <button type="button" id="ready-btn">Готов</button>
               </div>
-              <div class="border-wrapper unready-btn">
+              <div class="btn-wrapper unready-btn">
                 <button type="button" id="unready-btn">Не готов</button>
               </div>
-              <div class="border-wrapper next-btn">
+              <div class="btn-wrapper next-btn">
                 <button type="button" id="next-btn">Далее</button>
               </div>
-              <div class="border-wrapper add-scroll-modal-btn">
+              <div class="btn-wrapper add-scroll-modal-btn">
                 <button type="button" id="add-scroll-modal-btn">Далее</button>
               </div>
-              <div class="border-wrapper bye-btn">
-                <button type="button" id="bye-btn">Далее</button>
+              <div class="btn-wrapper bye-btn">
+                <button type="button" id="bye-btn">Прощай!</button>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="modal modal--masked add-scroll-modal" id="add-scroll-modal">
+        <div class="modal add-scroll-modal" id="add-scroll-modal">
+          <div class="modal-mask"></div>
           <div class="modal-content border-wrapper">
             <div class="scroll-img">
-              <img src="img/scroll-closed.png" width="300" alt="" />
+              <img src="img/scroll/scroll-closed.png" width="300" alt="" />
             </div>
-            <button id="add-scroll" class="btn">Добавить в инвентарь</button>
+          </div>
+          <div class="modal-actions">
+            <div class="btn-wrapper">
+              <button id="add-scroll">Добавить в инвентарь</button>
+            </div>
           </div>
         </div>
 
-        <div class="modal modal--masked scroll-modal" id="scroll-modal">
+        <div class="modal scroll-modal" id="scroll-modal">
+          <div class="modal-mask"></div>
           <div class="modal-content border-wrapper">
             <div class="scroll-img">
-              <img src="img/scroll-open.png" width="200" alt="" />
+              <img src="img/scroll/scroll-open.png" width="300" alt="" />
             </div>
-            <div class="scroll-actions">
-              <button id="hide-scroll" class="btn">Close</button>
+          </div>
+          <div class="modal-actions">
+            <div class="btn-wrapper">
+              <button id="hide-scroll">Закрыть</button>
             </div>
           </div>
         </div>
       </div>
       <div class="puzzle-wrapper">
+        <div class="puzzle-mask"></div>
         <div class="puzzle-container">
           <div id="puzzle" class="field"></div>
         </div>
       </div>
 
       <div class="help-desk">
-        <button class="helper" data-point="smoke">To Smoke</button>
+        <div class="help-desk-container">
+          <button class="helper" data-point="start">Start</button>
+          <button class="helper" data-point="puzzle">Puzzle</button>
+          <button class="helper" data-point="scroll">Scroll</button>
+          <button class="helper" data-point="smoke">Smoke</button>
+        </div>
       </div>
     </div>
     <script src="js/app.js" type="module"></script>

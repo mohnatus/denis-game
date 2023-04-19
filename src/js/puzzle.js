@@ -1,3 +1,5 @@
+import { isSimple } from "./sp";
+
 function Game(config = {}) {
   const gameConfig = {
     shuffleCount: 1,
@@ -14,12 +16,19 @@ function Game(config = {}) {
     [13, 14, 15, null],
   ];
 
-  const field = [
-    [1, 2, 3, 4],
-    [5, 6, 7, 8],
-    [9, 10, 11, 12],
-    [13, 14, 15, null],
-  ];
+  const field = isSimple
+    ? [
+        [1, 2, 3, 4],
+        [5, 6, 7, 8],
+        [9, 10, 11, 12],
+        [13, 14, null, 15],
+      ]
+    : [
+        [15, 12, 6, 14],
+        [7, 3, 8, 2],
+        [10, 11, 13, 9],
+        [5, 1, 4, null],
+      ];
 
   const shuffleVariants = [
     [0, 1],
@@ -84,7 +93,11 @@ function Game(config = {}) {
     el.style.setProperty("--original-x", i ? col : 3);
     el.style.setProperty("--original-y", i ? row : 3);
 
-    el.textContent = i;
+    const container = document.createElement("div");
+    container.classList.add("item-container");
+    container.textContent = i;
+
+    el.appendChild(container);
 
     return el;
   }
@@ -130,7 +143,7 @@ function Game(config = {}) {
   }
 
   function handleClick(e) {
-    const $item = e.target;
+    const $item = e.currentTarget;
     const x = Number($item.dataset.x);
     const y = Number($item.dataset.y);
 
@@ -162,7 +175,7 @@ function Game(config = {}) {
     $field.classList.toggle("blocked", blocked);
   }
 
-  shuffle(gameConfig.shuffleCount);
+  // shuffle(gameConfig.shuffleCount);
 
   return {
     render: renderField,

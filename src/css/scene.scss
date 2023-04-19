@@ -1,5 +1,6 @@
 body {
   background: black;
+  color: var(--color);
   overflow: hidden;
 }
 
@@ -23,7 +24,7 @@ body {
   right: -60px;
   bottom: 0;
 
-  background-image: url("../img/bg.png"), url("../img/bg.gif");
+  background-image: url(../img/bg/bg.png), url(../img/bg/bg.gif);
   background-position: 55% 100%;
   background-repeat: no-repeat;
   background-size: calc(60px + var(--scene-width)) auto;

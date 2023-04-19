@@ -13,7 +13,7 @@ export function typing($el, text, cb) {
     len++;
 
     return true;
-  }, 6);
+  }, 2);
 
   return cancel;
 }
