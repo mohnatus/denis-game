@@ -1,0 +1,32 @@
+body {
+  background: black;
+  overflow: hidden;
+}
+
+.scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  max-width: var(--scene-width);
+  margin: auto;
+  background: black;
+  overflow: hidden;
+}
+
+.scene-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: -60px;
+  bottom: 0;
+
+  background-image: url("../img/bg.png"), url("../img/bg.gif");
+  background-position: 55% 100%;
+  background-repeat: no-repeat;
+  background-size: calc(60px + var(--scene-width)) auto;
+
+  filter: blur(1px);
+}

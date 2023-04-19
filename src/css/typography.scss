@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Thin Pixel-7";
+    src: local("Thin Pixel-7"), url('../fonts/ThinPixel/thin_pixel-7.ttf') format("truetype");
+}
+
+html {
+  font-size: 45px;
+}
+
+body {
+  font-family: "Thin Pixel-7", sans-serif;
+}

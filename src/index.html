@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.scss" />
+  </head>
+  <body>
+    <div id="app">
+      <div id="scene" class="scene">
+        <div class="scene-bg"></div>
+
+        <div id="master" class="master">
+          <div class="master-body">
+            <div class="master-feet"></div>
+            <div class="master-legs"></div>
+
+            <div class="master-chest"></div>
+            <div class="master-stick"></div>
+            <div class="master-head"></div>
+          </div>
+
+          <canvas id="smoke" class="smoke" width="220" height="396"> </canvas>
+        </div>
+
+        <div id="inventory" class="inventory">
+          <div class="inventory-item border-wrapper">
+            <div id="show-scroll" class="inventory-scroll">
+              <img src="img/scroll-closed.png" width="40" alt="" />
+            </div>
+          </div>
+          <div class="inventory-item border-wrapper"></div>
+          <div class="inventory-item border-wrapper"></div>
+          <div class="inventory-item border-wrapper"></div>
+          <div class="inventory-item border-wrapper"></div>
+        </div>
+
+        <div class="dialog-wrapper">
+          <div id="dialog" class="dialog border-wrapper">
+            <div class="dialog-content">
+              <div class="dialog-text"></div>
+            </div>
+          </div>
+
+          <div class="dialog-buttons">
+            <div class="dialog-buttons-container">
+              <div class="border-wrapper ready-btn">
+                <button type="button" id="ready-btn">Готов</button>
+              </div>
+              <div class="border-wrapper unready-btn">
+                <button type="button" id="unready-btn">Не готов</button>
+              </div>
+              <div class="border-wrapper next-btn">
+                <button type="button" id="next-btn">Далее</button>
+              </div>
+              <div class="border-wrapper add-scroll-modal-btn">
+                <button type="button" id="add-scroll-modal-btn">Далее</button>
+              </div>
+              <div class="border-wrapper bye-btn">
+                <button type="button" id="bye-btn">Далее</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal modal--masked add-scroll-modal" id="add-scroll-modal">
+          <div class="modal-content border-wrapper">
+            <div class="scroll-img">
+              <img src="img/scroll-closed.png" width="300" alt="" />
+            </div>
+            <button id="add-scroll" class="btn">Добавить в инвентарь</button>
+          </div>
+        </div>
+
+        <div class="modal modal--masked scroll-modal" id="scroll-modal">
+          <div class="modal-content border-wrapper">
+            <div class="scroll-img">
+              <img src="img/scroll-open.png" width="200" alt="" />
+            </div>
+            <div class="scroll-actions">
+              <button id="hide-scroll" class="btn">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="puzzle-wrapper">
+        <div class="puzzle-container">
+          <div id="puzzle" class="field"></div>
+        </div>
+      </div>
+
+      <div class="help-desk">
+        <button class="helper" data-point="smoke">To Smoke</button>
+      </div>
+    </div>
+    <script src="js/app.js" type="module"></script>
+  </body>
+</html>

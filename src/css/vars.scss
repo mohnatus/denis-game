@@ -1,0 +1,9 @@
+:root {
+  --scene-width: 800px;
+  --item-size: 70px;
+  --bg: white;
+  --border-width: 8px;
+  --master-width: 220px;
+  --master-ratio: 180%;
+  --master-height: calc(var(--master-ratio) / 100% * var(--master-width));
+}

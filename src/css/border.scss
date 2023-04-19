@@ -1,0 +1,31 @@
+.border-wrapper {
+  position: relative;
+}
+
+.border-wrapper:after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-style: solid;
+  border-width: var(--border-width);
+  border-color: #000;
+  border-image-slice: 33%;
+  border-image-width: var(--border-width);
+  border-image-outset: 0;
+  border-image-source: url(../img/border-outer.svg);
+  z-index: 2;
+  pointer-events: none;
+}
+.border-wrapper:before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-style: solid;
+  border-width: var(--border-width);
+  border-color: #000;
+  border-image-slice: 49%;
+  border-image-width: var(--border-width);
+  border-image-outset: 0;
+  border-image-source: url(../img/border-inner.svg);
+  pointer-events: none;
+}

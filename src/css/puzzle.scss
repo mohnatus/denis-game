@@ -1,0 +1,49 @@
+.puzzle-wrapper {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.75);
+  align-items: center;
+  justify-content: center;
+}
+
+body.puzzle .puzzle-wrapper {
+  display: flex;
+}
+
+.field {
+  position: relative;
+  width: calc(4 * var(--item-size));
+  height: calc(4 * var(--item-size));
+}
+
+.field .item {
+  position: absolute;
+  width: var(--item-size);
+  height: var(--item-size);
+  /* background-color: hsl(calc(var(--value) * 10), 50%, 50%); */
+  background: white;
+  background-size: calc(4 * var(--item-size)) calc(4 * var(--item-size));
+  background-position: left calc(-1 * var(--original-x) * var(--item-size)) top
+    calc(-1 * var(--original-y) * var(--item-size));
+  top: 0;
+  left: 0;
+  border: 4px inset brown;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: brown;
+  font-size: 60px;
+  font-weight: bold;
+  transform: translateX(calc(var(--x-position) * var(--item-size)))
+    translateY(calc(var(--y-position) * var(--item-size)));
+  border-radius: 4px;
+}
+
+.field.blocked {
+  pointer-events: none;
+  opacity: 0.75;
+}

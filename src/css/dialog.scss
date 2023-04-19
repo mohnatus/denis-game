@@ -1,0 +1,102 @@
+.dialog-wrapper {
+  display: none;
+  position: absolute;
+  bottom: 400px;
+  left: 20px;
+  right: 20px;
+}
+
+body.inited .dialog-wrapper {
+  display: block;
+}
+
+body.puzzle,
+body.hidden-scroll,
+body.finish {
+  .dialog-wrapper {
+    display: none;
+  }
+}
+
+.dialog {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: auto;
+
+  &-content {
+    position: relative;
+    z-index: 3;
+  }
+
+  &-text {
+    height: 2.4em;
+    line-height: 1.2;
+  }
+
+  &-buttons {
+    max-width: 400px;
+    width: 100%;
+    margin: 20px auto;
+
+    &-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+
+    .border-wrapper {
+      margin: 0 10px;
+      flex-basis: 50%;
+      flex-grow: 1;
+
+      button {
+        width: 100%;
+        background: var(--bg);
+        padding: 10px;
+      }
+    }
+
+    .ready-btn,
+    .unready-btn,
+    .add-scroll-modal-btn,
+    .bye-btn {
+      display: none;
+    }
+
+    .dialog.last-screen + & {
+      .next-btn {
+        display: none;
+      }
+    }
+
+    .dialog.typing + & {
+      .border-wrapper {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    .dialog[data-screen="scroll"] + & {
+      .add-scroll-modal-btn {
+        display: block;
+      }
+    }
+
+    .dialog[data-screen="bye"] + & {
+      .bye-btn {
+        display: block;
+      }
+    }
+
+    .dialog[data-screen="ready"] + & {
+      .ready-btn,
+      .unready-btn {
+        display: block;
+      }
+    }
+  }
+}
