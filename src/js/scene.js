@@ -64,9 +64,13 @@ export function initScene() {
           document.body.classList.remove(states.puzzleShown);
           gameSound.pause();
           winSound.play();
-          setTimeout(() => {
+
+          const cb = () => {
             backSound.play();
-          }, 500);
+            winSound.removeEventListener("end", cb);
+          };
+          winSound.addEventListener("end", cb);
+
         });
         break;
       case elementIds.unreadyBtn:
@@ -75,8 +79,6 @@ export function initScene() {
         break;
       case elementIds.finishGame:
         clickSound.play();
-        winSound.pause();
-
         document.body.classList.remove(states.win);
         dialog.start(WIN);
         break;

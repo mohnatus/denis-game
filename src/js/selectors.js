@@ -24,7 +24,6 @@ export const elementIds = {
   disapperingSound: "disappearing-sound",
   stoneSound: "stone-sound",
   inventorySound: "inventory-sound",
-  typeSound: "type-sound"
 };
 
 export const states = {

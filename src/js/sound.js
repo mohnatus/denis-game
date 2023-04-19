@@ -3,9 +3,8 @@ import { elementIds } from "./selectors";
 export const backSound = document.getElementById(elementIds.backSound);
 backSound.volume = 0.02;
 
-
 export const clickSound = document.getElementById(elementIds.clickSound);
-typeSound.volume = 0.2;
+clickSound.volume = 0.2;
 
 export const stoneSound = document.getElementById(elementIds.stoneSound);
 

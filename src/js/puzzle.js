@@ -101,7 +101,9 @@ function Game(config = {}) {
     stoneSound.currentTime = 0;
     stoneSound.play();
 
-    shuffleFieldItems(from, to);
+    setTimeout(() => {
+      shuffleFieldItems(from, to);
+    });
 
     const $fromItem = getItem(fromX, fromY);
     const $toItem = getItem(toX, toY);

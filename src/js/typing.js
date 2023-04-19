@@ -3,11 +3,8 @@ import { raf } from "./raf";
 export function typing($el, text, cb) {
   let len = 0;
 
-
-
   const cancel = raf(() => {
     if (len > text.length) {
-      typeSound.pause();
       cb();
       return false;
     }
