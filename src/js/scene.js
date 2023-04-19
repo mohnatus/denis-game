@@ -8,6 +8,9 @@ import {
   clickSound,
   gameSound,
   inventorySound,
+  play,
+  stoneSound,
+  stop,
   winSound,
 } from "./sound";
 
@@ -51,58 +54,53 @@ export function initScene() {
 
     switch (btn.id) {
       case elementIds.nextBtn:
-        clickSound.play();
+        play(clickSound);
         dialog.next();
         break;
       case elementIds.readyBtn:
-        clickSound.play();
-        backSound.pause();
-        gameSound.play();
+        stop(backSound);
+        play(clickSound, gameSound);
+
         document.body.classList.add(states.puzzleShown);
         activateGame(document.getElementById(elementIds.puzzle), () => {
-          document.body.classList.add(states.win);
-          document.body.classList.remove(states.puzzleShown);
-          gameSound.pause();
-          winSound.play();
+          stop(gameSound);
+          stop(stoneSound);
+          play(winSound);
 
-          const cb = () => {
-            backSound.play();
-            winSound.removeEventListener("end", cb);
-          };
-          winSound.addEventListener("end", cb);
+          setTimeout(() => {
+            document.body.classList.add(states.win);
+            document.body.classList.remove(states.puzzleShown);
+          }, 100);
         });
         break;
       case elementIds.unreadyBtn:
-        clickSound.play();
+        play(clickSound);
         dialog.start(UNREADY);
         break;
       case elementIds.finishGame:
-        clickSound.play();
+        play(clickSound);
         if (backSound.paused) {
-          backSound.play();
+          play(backSound);
         }
         document.body.classList.remove(states.win);
         dialog.start(WIN);
         break;
       case elementIds.addScrollModalTrigger:
-        clickSound.play();
+        play(clickSound);
         document.body.classList.add(states.addScrollModalShown);
         document.body.classList.add(states.hasHiddenScroll);
         break;
       case elementIds.addScrollBtn:
-        clickSound.play();
+        play(clickSound, inventorySound);
         document.body.classList.remove(states.addScrollModalShown);
         document.body.classList.add(states.hasScroll);
-        setTimeout(() => {
-          inventorySound.play();
-        });
         break;
       case elementIds.showScrollModalTrigger:
-        clickSound.play();
+        play(clickSound);
         document.body.classList.add(states.scrollModalShown);
         break;
       case elementIds.hideScrollBtn:
-        clickSound.play();
+        play(clickSound);
         document.body.classList.remove(states.scrollModalShown);
         if (!findScroll) {
           dialog.start(BYE);
@@ -111,7 +109,7 @@ export function initScene() {
         findScroll = true;
         break;
       case elementIds.byeBtn:
-        clickSound.play();
+        play(clickSound);
         document.body.classList.add(states.finish);
         Smoke(document.getElementById(elementIds.smoke));
         break;
@@ -123,8 +121,11 @@ export function initScene() {
     }
   });
 
-  const initHandler = () => {
+  const initHandler = (e) => {
+    if (document.body.hasAttribute("data-loading")) return;
+
     if (!document.body.classList.contains(states.inited)) {
+      backSound.pause();
       backSound.play();
       dialog.start(HELLO);
       document.body.classList.add(states.inited);

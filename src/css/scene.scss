@@ -31,3 +31,8 @@ body {
 
   filter: blur(1px);
 }
+
+body[data-loading] {
+  opacity: 0.5;
+  pointer-events: none;
+}

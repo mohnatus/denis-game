@@ -38,6 +38,8 @@ body.puzzle .puzzle-wrapper {
   height: var(--item-size);
   cursor: pointer;
 
+  outline: none!important;
+
   top: 0;
   left: 0;
 

@@ -1,0 +1,45 @@
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+
+  &-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    backdrop-filter: blur(6px);
+    z-index: 1;
+  }
+
+  .loader-face {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    z-index: 2;
+    animation-name: rotate;
+    animation-duration: 2s;
+    animation-timing-function: steps(6, end);
+    animation-iteration-count: infinite;
+  }
+}
+
+body[data-loading] .loader {
+  display: flex;
+}
