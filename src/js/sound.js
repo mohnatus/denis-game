@@ -3,9 +3,6 @@ import { elementIds } from "./selectors";
 export const backSound = document.getElementById(elementIds.backSound);
 backSound.volume = 0.02;
 
-export const typeSound = document.getElementById(elementIds.typeSound);
-typeSound.playbackRate = 3.5;
-typeSound.volume = 0.4;
 
 export const clickSound = document.getElementById(elementIds.clickSound);
 typeSound.volume = 0.2;
