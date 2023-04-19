@@ -2,32 +2,39 @@ import { activateGame } from "./puzzle";
 import { BYE, HELLO, UNREADY, WIN } from "./screens";
 import { Dialog } from "./dialog";
 import { Smoke } from "./smoke";
-import { elementIds, states } from "./selectors";
+import { attrs, elementIds, states } from "./selectors";
 
 export function initScene() {
   const dialog = Dialog(document.getElementById(elementIds.dialog));
 
   const helper = (point) => {
+    const classes = [];
+    if (document.body.classList.contains(states.help)) classes.push(states.help);
+
     if (point === "start") {
-      document.body.className = "";
+      
     }
+
     if (point === "smoke") {
-      document.body.className = "";
-      document.body.classList.add(states.inited);
+      classes.push(states.inited)
       dialog.start(["bye"]);
-      return;
     }
+
     if (point === "puzzle") {
-      document.body.className = [states.inited, states.puzzleShown].join(" ");
+      classes.push(states.inited, states.puzzleShown)
+      
       activateGame(document.getElementById(elementIds.puzzle), () => {
         dialog.start(WIN);
         document.body.classList.remove(states.puzzleShown);
       });
     }
+
     if (point === "scroll") {
-      document.body.className = [states.inited,].join(" ");
+      classes.push(states.inited)
       dialog.start(["scroll"]);
     }
+
+    document.body.className = classes.join(' ');
   };
 
   document.addEventListener("click", (e) => {
@@ -41,12 +48,16 @@ export function initScene() {
       case elementIds.readyBtn:
         document.body.classList.add(states.puzzleShown);
         activateGame(document.getElementById(elementIds.puzzle), () => {
-          dialog.start(WIN);
+          document.body.classList.add(states.win);
           document.body.classList.remove(states.puzzleShown);
         });
         break;
       case elementIds.unreadyBtn:
         dialog.start(UNREADY);
+        break;
+      case elementIds.finishGame:
+        document.body.classList.remove(states.win);
+        dialog.start(WIN);
         break;
       case elementIds.addScrollModalTrigger:
         document.body.classList.add(states.addScrollModalShown);

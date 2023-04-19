@@ -14,7 +14,7 @@ export const screens = {
   },
 
   win: {
-    text: "Ты справился с первым испытанием!",
+    text: "Поздравляю! Ты справился с первым испытанием!",
   },
   forward: {
     text: "Но впереди их еще много...",
@@ -35,6 +35,6 @@ export const screens = {
 };
 
 export const HELLO = ["hello", "warning", "ready"];
-export const UNREADY = ["coward", "lalala", "ready"];
+export const UNREADY = ["coward", "warning", "ready"];
 export const WIN = ["win", "forward", "scroll"];
 export const BYE = ["memento", "hint", "bye"];

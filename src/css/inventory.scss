@@ -1,9 +1,9 @@
 @keyframes activeItem {
   0% {
-    border-color: transparent;
+    box-shadow: 0 0 0px 0px rgba(243, 208, 50, 0.5)
   }
   100% {
-    border-color: red;
+    box-shadow: 0 0 25px 15px rgb(231, 223, 213)
   }
 }
 
@@ -46,10 +46,13 @@ body.has-scroll .inventory-scroll {
   &:before {
     content: "";
     position: absolute;
-    border: 2px solid transparent;
-    inset: -6px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     animation-name: activeItem;
     animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
     animation-iteration-count: 5;
   }
 }

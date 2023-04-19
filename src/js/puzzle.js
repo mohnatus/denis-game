@@ -30,13 +30,6 @@ function Game(config = {}) {
         [5, 1, 4, null],
       ];
 
-  const shuffleVariants = [
-    [0, 1],
-    [0, -1],
-    [1, 0],
-    [-1, 0],
-  ];
-
   function getEmptyItemCoords() {
     for (let y = 0; y < 4; y++) {
       for (let x = 0; x < 4; x++) {
@@ -53,32 +46,6 @@ function Game(config = {}) {
 
     field[fromY][fromX] = null;
     field[toY][toX] = value;
-  }
-
-  function shuffleTick(prev) {
-    const { x: emptyX, y: emptyY } = getEmptyItemCoords();
-
-    const movableItems = shuffleVariants
-      .map((variant) => {
-        return { x: emptyX + variant[0], y: emptyY + variant[1] };
-      })
-      .filter((item) => {
-        const { x, y } = item;
-        if (prev && prev.x === x && prev.y === y) return false;
-        return x >= 0 && x < 4 && y >= 0 && y < 4;
-      });
-
-    const random = Math.floor(Math.random() * movableItems.length);
-
-    const item = movableItems[random];
-
-    shuffleFieldItems(item, { x: emptyX, y: emptyY });
-  }
-
-  function shuffle(count) {
-    for (let i = 0; i < count; i++) {
-      shuffleTick();
-    }
   }
 
   function createItem(i) {
@@ -138,7 +105,14 @@ function Game(config = {}) {
     setItemPosition($toItem, fromX, fromY);
 
     if (check()) {
-      gameConfig.onSuccess();
+      const cb = () => {
+        setTimeout(() => {
+          gameConfig.onSuccess();
+        }, 500);
+        $field.removeEventListener("transitionend", cb);
+      };
+
+      $field.addEventListener("transitionend", cb);
     }
   }
 
@@ -161,6 +135,7 @@ function Game(config = {}) {
 
   function renderField(el) {
     $field = el;
+
     field.forEach((row, y) => {
       row.forEach((item, x) => {
         const $item = createItem(item);
@@ -174,8 +149,6 @@ function Game(config = {}) {
   function block(blocked) {
     $field.classList.toggle("blocked", blocked);
   }
-
-  // shuffle(gameConfig.shuffleCount);
 
   return {
     render: renderField,

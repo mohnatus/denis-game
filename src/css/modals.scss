@@ -48,7 +48,10 @@
   max-width: 100%;
 }
 
-.scroll-text {
+.congratulations {
+  padding: 30px 0;
+  text-align: center;
+  font-size: 2em;
 }
 
 body.add-scroll .add-scroll-modal {
@@ -56,5 +59,9 @@ body.add-scroll .add-scroll-modal {
 }
 
 body.scroll .scroll-modal {
+  display: flex;
+}
+
+body.win .win-modal {
   display: flex;
 }
