@@ -70,7 +70,6 @@ export function initScene() {
             winSound.removeEventListener("end", cb);
           };
           winSound.addEventListener("end", cb);
-
         });
         break;
       case elementIds.unreadyBtn:
@@ -79,6 +78,9 @@ export function initScene() {
         break;
       case elementIds.finishGame:
         clickSound.play();
+        if (backSound.paused) {
+          backSound.play();
+        }
         document.body.classList.remove(states.win);
         dialog.start(WIN);
         break;

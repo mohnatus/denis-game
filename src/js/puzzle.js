@@ -103,24 +103,24 @@ function Game(config = {}) {
 
     setTimeout(() => {
       shuffleFieldItems(from, to);
+
+      const $fromItem = getItem(fromX, fromY);
+      const $toItem = getItem(toX, toY);
+
+      setItemPosition($fromItem, toX, toY);
+      setItemPosition($toItem, fromX, fromY);
+
+      if (check()) {
+        const cb = () => {
+          setTimeout(() => {
+            gameConfig.onSuccess();
+          }, 500);
+          $field.removeEventListener("transitionend", cb);
+        };
+
+        $field.addEventListener("transitionend", cb);
+      }
     });
-
-    const $fromItem = getItem(fromX, fromY);
-    const $toItem = getItem(toX, toY);
-
-    setItemPosition($fromItem, toX, toY);
-    setItemPosition($toItem, fromX, fromY);
-
-    if (check()) {
-      const cb = () => {
-        setTimeout(() => {
-          gameConfig.onSuccess();
-        }, 500);
-        $field.removeEventListener("transitionend", cb);
-      };
-
-      $field.addEventListener("transitionend", cb);
-    }
   }
 
   function handleClick(e) {
