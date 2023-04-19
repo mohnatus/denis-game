@@ -1,10 +1,14 @@
 import { raf } from "./raf";
+import { typeSound } from "./sound";
 
 export function typing($el, text, cb) {
   let len = 0;
 
+  typeSound.play();
+
   const cancel = raf(() => {
     if (len > text.length) {
+      typeSound.pause();
       cb();
       return false;
     }

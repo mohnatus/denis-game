@@ -1,3 +1,4 @@
+import { stoneSound } from "./sound";
 import { isSimple } from "./sp";
 
 function Game(config = {}) {
@@ -95,6 +96,10 @@ function Game(config = {}) {
   function move(from, to) {
     const { x: fromX, y: fromY } = from;
     const { x: toX, y: toY } = to;
+
+    stoneSound.pause();
+    stoneSound.currentTime = 0;
+    stoneSound.play();
 
     shuffleFieldItems(from, to);
 

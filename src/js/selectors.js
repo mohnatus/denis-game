@@ -14,6 +14,17 @@ export const elementIds = {
   smoke: "smoke",
   puzzle: "puzzle",
   finishGame: "finish-game",
+
+  backSound: "back-sound",
+  gameSound: "game-sound",
+  winSound: "win-sound",
+  clickSound: "click-sound",
+  backSound: "back-sound",
+  winSound: "win-sound",
+  disapperingSound: "disappearing-sound",
+  stoneSound: "stone-sound",
+  inventorySound: "inventory-sound",
+  typeSound: "type-sound"
 };
 
 export const states = {
@@ -29,7 +40,7 @@ export const states = {
   fullSmoke: "full-smoke",
   help: "help",
   unready: "unready",
-  win: "win"
+  win: "win",
 };
 
 export const classes = {

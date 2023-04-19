@@ -13,6 +13,7 @@ import img12 from "../img/smoke/12.png";
 import { raf } from "./raf";
 import { Canvas } from "./canvas";
 import { states } from "./selectors";
+import { disappearingSound } from "./sound";
 
 const sprite = [
   img1,
@@ -39,7 +40,7 @@ const images = sprite.map((src) => {
 
 export function Smoke($el) {
   const canvas = Canvas($el);
-  
+
   let index = 0;
 
   function showFrame() {
@@ -49,10 +50,10 @@ export function Smoke($el) {
       document.body.classList.add(states.fullSmoke);
     }
 
-  
-
-    canvas.drawImage(img)
+    canvas.drawImage(img);
   }
+
+  disappearingSound.play();
 
   raf(() => {
     if (index > sprite.length) return false;
